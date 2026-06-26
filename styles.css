@@ -1,3 +1,4 @@
+/* --- GLOBAL RESETS --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +7,13 @@
 
 html, body {
     width: 100%;
+    height: 100%;
     overflow-x: hidden;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     scroll-behavior: smooth; 
 }
 
+/* --- FULL PAGE SECTION CONTROLLERS --- */
 .page-section {
     width: 100%;
     height: 100vh;
@@ -19,6 +22,8 @@ html, body {
     background-size: cover;        
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-one {
@@ -29,15 +34,21 @@ html, body {
     background-image: url("Location image.png");
 }
 
+.section-three {
+    background-color: #dbe4ee; 
+}
+
+/* --- FLEXBOX BOX WRAPPERS --- */
 .container {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     overflow: hidden; 
+    padding: 120px 40px 40px 40px;
 }
 
 .container.bottom-align {
@@ -45,64 +56,7 @@ html, body {
     padding-bottom: 80px; 
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px; 
-    padding: 0 40px;
-}
-
-.image-gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px; 
-    width: 100%;
-}
-
-.gallery-card {
-    flex: 1;
-    width: 25%;
-    height: 52vh; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 40px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.img-shore {
-    background-image: url("1.png");
-}
-
-.img-monastery {
-    background-image: url("2.png");
-}
-
-.img-lake {
-    background-image: url("3.png");
-}
-
-.img-crater {
-    background-image: url("4.png");
-}
-
-.card-overlay-text {
-    color: #ffffff;
-    font-family: 'Arial Impact', 'Arial Black', sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
+/* --- HERO TEXT AND TOP NAVIGATION CONTROLS --- */
 .navigation {
     width: 100%;
     padding: 30px 60px;
@@ -112,6 +66,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 20;
 }
 
 .logo {
@@ -141,12 +96,6 @@ html, body {
     font-weight: 500;
 }
 
-.profile-icon svg {
-    width: 18px;
-    height: 18px;
-    display: block;
-}
-
 .nav-right {
     display: flex;
     justify-content: flex-end;
@@ -168,6 +117,11 @@ html, body {
     cursor: pointer;
 }
 
+.section-one .hero-content {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -183,7 +137,7 @@ html, body {
     text-transform: uppercase;
 }
 
-.main-title {
+.main-title {    
     font-family: 'Arial Impact', 'Arial Black', sans-serif;
     font-size: 130px;
     font-weight: 900;
@@ -198,4 +152,188 @@ html, body {
     letter-spacing: 1px;
     font-weight: bold;
     margin-top: 10px;
+}
+
+/* --- GALLERY DISPLAY BLOCKS --- */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+    padding: 0 40px;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; 
+    width: 100%;
+}
+
+.gallery-card {
+    flex: 1;
+    width: 25%;
+    height: 52vh; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-15px) scale(1.04);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.img-shore { background-image: url("1.png"); }
+.img-monastery { background-image: url("2.png"); }
+.img-lake { background-image: url("3.png"); }
+.img-crater { background-image: url("4.png"); }
+
+.card-overlay-text {
+    color: #ffffff;
+    font-family: 'Arial Impact', 'Arial Black', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* --- INTERACTIVE ROADMAP LAYER COMPONENT --- */
+.map-content-layout {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative; 
+    align-items: center;
+    justify-content: center;
+}
+
+/* Layered Header Title Floating Above Map Graphic */
+.map-header {
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    color: #000000;
+    z-index: 10;
+}
+
+.map-header h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.map-header p {
+    font-size: 18px;
+    color: #555555;
+    font-weight: 500;
+}
+
+/* Floating Timeline Interface */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 35%;
+    max-width: 450px;
+    z-index: 5;
+    position: absolute;
+    left: 60px;
+    top: 170px;
+}
+
+.timeline-link-wrapper {
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.timeline-link-wrapper:hover {
+    transform: translateX(8px);
+}
+
+.timeline-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 50px;
+    color: #000000;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(6px);         
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    width: 100%;
+    cursor: pointer;
+}
+
+.card-day1 { background-color: rgba(237, 233, 221, 0.85); }
+.card-day2 { background-color: rgba(169, 191, 199, 0.85); }
+.card-day3 { background-color: rgba(193, 218, 217, 0.85); }
+.card-day4 { background-color: rgba(169, 198, 194, 0.85); }
+.card-day5 { background-color: rgba(169, 203, 222, 0.85); }
+
+.card-info h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.card-info .location-pin {
+    font-size: 12px;
+    color: #444444;
+    font-weight: 500;
+}
+
+.day-badge {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Background Image Stack Settings */
+.map-bg-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.roadmap-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    display: block;
 }
