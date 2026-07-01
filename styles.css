@@ -25,7 +25,7 @@ html, body {
 }
 
 .section-one {
-    background-image: url("heroimage.png");
+    background-image: url('HeroImage.png');
 }
 
 .section-two {
@@ -591,4 +591,4 @@ html, body {
 
 .map-content-layout:has(.trigger-khuvsgul:hover) .circle-khuvsgul {
     opacity: 1;
-}
+}.hero { background-image: url('./HeroImage.png'); }
